@@ -3,8 +3,7 @@
 //全局组件注册，入口文件
 import Vue from 'vue'
 import App from './App'
-import router from './router'
-console.log(router)
+import router from './router/index.js'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 import ElementUI from 'element-ui'
@@ -19,5 +18,6 @@ Vue.use(ElementUI)
 new Vue({
   el: '#app',
   components: { App },
-  template: '<App/>'
+  template: '<App/>',
+  router
 })
