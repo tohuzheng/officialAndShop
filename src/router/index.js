@@ -4,8 +4,8 @@ import indexRouters from './shop/shop-index.js'
 
 Vue.use(Router)
 
-//  let routes = new Set([indexRouters]);
-console.log(indexRouters)
+let routes = new Set(indexRouters);
+
 export default new Router({
-  routes:indexRouters
+  routes:routes
 })
