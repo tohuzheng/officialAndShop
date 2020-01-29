@@ -38,30 +38,33 @@ export default {
     methods:{
         submitLogin:function(){
 
-            let words = "123456";
-            let publicKey = `-----BEGIN PUBLIC KEY-----
-            MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCh5Nk2GLiyQFMIU+h3OEA4UeFb
-            u3dCH5sjd/sLTxxvwjXq7JLqJbt2rCIdzpAXOi4jL+FRGQnHaxUlHUBZsojnCcHv
-            hrz2knV6rXNogt0emL7f7ZMRo8IsQGV8mlKIC9xLnlOQQdRNUssmrROrCG99wpTR
-            RNZjOmLvkcoXdeuaCQIDAQAB
-            -----END PUBLIC KEY-----`;
-            let privateKey=`-----BEGIN RSA PRIVATE KEY-----
-            MIICWwIBAAKBgQCh5Nk2GLiyQFMIU+h3OEA4UeFbu3dCH5sjd/sLTxxvwjXq7JLq
-            Jbt2rCIdzpAXOi4jL+FRGQnHaxUlHUBZsojnCcHvhrz2knV6rXNogt0emL7f7ZMR
-            o8IsQGV8mlKIC9xLnlOQQdRNUssmrROrCG99wpTRRNZjOmLvkcoXdeuaCQIDAQAB
-            AoGAUTcJ1H6QYTOts9bMHsrERLymzir8R9qtLBzrfp/gRxxpigHGLdph8cWmk8dl
-            N5HDRXmmkdV6t2S7xdOnzZen31lcWe0bIzg0SrFiUEOtg3Lwxzw2Pz0dKwg4ZUoo
-            GKpcIU6kEpbC2UkjBV4+2E6P1DXuhdgTyHoUA3ycxOdjCAUCQQCyjTzGPXFoHq5T
-            miJyVd4VXNyCXGU0ZuQayt6nPN8Gd5CcEb2S4kggzPXQcd90FO0kHfZV6+PGTrc2
-            ZUuz5uwPAkEA6B3lmEmiZsJS/decLzWR0T1CXaFGwTjBQbHXJ0RziAfkuy+VwSmh
-            vrW/ipk5xbREr5rKx3jVI2PzVOvLw7NgZwJAbUsvDFnH9WfyZZJPy5TsID97awCL
-            oovozM2phM0p55eAmUfyttp0ND/BqBpMIY49qoH8q5N9FYJRe6Z9tF2B2QJAQBEo
-            cw039xcB4zCk2l713YQEEmXWarSomuJkWWFKZiyPlJ8Ava0pCMOPl8jNKmWkY7fc
-            6ovOgJMw8aqXtm+HVwJAerJeUEDez2djG5pIF6aCV0bP3fhQUq8OQCgGF5Qzo9Cn
-            qvYreGpYKPJGVixAsEPCiLzJRhy1XfFona6VRXIIxw==
-            -----END RSA PRIVATE KEY-----`;
-            let pass=this.encryptFun(words,publicKey);
-            this.decryptionFun(pass,privateKey);
+            // let words = "123456";
+            // let publicKey = `-----BEGIN PUBLIC KEY-----
+            // MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCh5Nk2GLiyQFMIU+h3OEA4UeFb
+            // u3dCH5sjd/sLTxxvwjXq7JLqJbt2rCIdzpAXOi4jL+FRGQnHaxUlHUBZsojnCcHv
+            // hrz2knV6rXNogt0emL7f7ZMRo8IsQGV8mlKIC9xLnlOQQdRNUssmrROrCG99wpTR
+            // RNZjOmLvkcoXdeuaCQIDAQAB
+            // -----END PUBLIC KEY-----`;
+            // let privateKey=`-----BEGIN RSA PRIVATE KEY-----
+            // MIICWwIBAAKBgQCh5Nk2GLiyQFMIU+h3OEA4UeFbu3dCH5sjd/sLTxxvwjXq7JLq
+            // Jbt2rCIdzpAXOi4jL+FRGQnHaxUlHUBZsojnCcHvhrz2knV6rXNogt0emL7f7ZMR
+            // o8IsQGV8mlKIC9xLnlOQQdRNUssmrROrCG99wpTRRNZjOmLvkcoXdeuaCQIDAQAB
+            // AoGAUTcJ1H6QYTOts9bMHsrERLymzir8R9qtLBzrfp/gRxxpigHGLdph8cWmk8dl
+            // N5HDRXmmkdV6t2S7xdOnzZen31lcWe0bIzg0SrFiUEOtg3Lwxzw2Pz0dKwg4ZUoo
+            // GKpcIU6kEpbC2UkjBV4+2E6P1DXuhdgTyHoUA3ycxOdjCAUCQQCyjTzGPXFoHq5T
+            // miJyVd4VXNyCXGU0ZuQayt6nPN8Gd5CcEb2S4kggzPXQcd90FO0kHfZV6+PGTrc2
+            // ZUuz5uwPAkEA6B3lmEmiZsJS/decLzWR0T1CXaFGwTjBQbHXJ0RziAfkuy+VwSmh
+            // vrW/ipk5xbREr5rKx3jVI2PzVOvLw7NgZwJAbUsvDFnH9WfyZZJPy5TsID97awCL
+            // oovozM2phM0p55eAmUfyttp0ND/BqBpMIY49qoH8q5N9FYJRe6Z9tF2B2QJAQBEo
+            // cw039xcB4zCk2l713YQEEmXWarSomuJkWWFKZiyPlJ8Ava0pCMOPl8jNKmWkY7fc
+            // 6ovOgJMw8aqXtm+HVwJAerJeUEDez2djG5pIF6aCV0bP3fhQUq8OQCgGF5Qzo9Cn
+            // qvYreGpYKPJGVixAsEPCiLzJRhy1XfFona6VRXIIxw==
+            // -----END RSA PRIVATE KEY-----`;
+            // let pass=this.encryptFun(words,publicKey);
+            // this.decryptionFun(pass,privateKey);
+            let name=this.username;
+            let pass=this.password;
+            this.send(name,pass);
         },
         resete:function(){
             this.username='';
@@ -84,6 +87,20 @@ export default {
             console.log(data);
 
             return data;
+        },
+        send:function(name,pass){
+            console.log(name+pass);
+            //  let param = new URLSearchParams()
+            //  param.append('username',name);
+            //  param.append('password',pass);
+            
+            let dto={'username':name,'password':pass,'keys':[1,2,3,4,5,6]};
+            
+            this.axios.post('/api/KeBiao/addAccount',dto)
+            .then((data) => {
+                console.log(data)
+                alert(data.data)
+            });
         }
     }
 }
