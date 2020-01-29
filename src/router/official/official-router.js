@@ -1,10 +1,15 @@
-import officialIndex from '@/pages/official/Index.vue'
+import officialWelcome from '@/pages/official/Welcome.vue'
+import officialIndex from '@/pages/official/Index'
 
 export default [
  
     {
-      path: '/official',
-      name: 'official',
+      path: '/officialWelcome',
+      name: 'officialWelcome',
+      component: officialWelcome
+    },{
+      path: '/officialIndex',
+      name: 'officialIndex',
       component: officialIndex
     }
       
