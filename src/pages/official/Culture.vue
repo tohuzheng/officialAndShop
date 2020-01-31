@@ -43,7 +43,4 @@ export default {
      margin-left: 200px;
  }
 
- .div-culture2{
-     
- }
 </style>
