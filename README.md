@@ -9,7 +9,7 @@
 npm install
 
 # serve with hot reload at localhost:8080
-# seerrkjjk
+# 输出下面命令，运行项目 访问地址localhost:8080
 npm run dev
 
 # build for production with minification
