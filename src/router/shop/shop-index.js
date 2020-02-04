@@ -1,6 +1,6 @@
 
 import login from '@/pages/shop/login'
-import Index from '@/components/shop/index'
+import Index from '@/pages/shop/index'
 import shopClass from '@/pages/shop/shopClass'
 
 export default [

@@ -11,7 +11,7 @@
             <el-col :span="12">
                 <transition name="el-zoom-in-center">
                 <div class="png-div" v-show="true">
-                    <img src='../../assets/xingxiang.png' style="height:280px"/>
+                    <img src='@/assets/xingxiang.png' style="height:280px"/>
                 </div>
                 </transition>
                 

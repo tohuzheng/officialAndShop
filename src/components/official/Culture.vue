@@ -14,7 +14,7 @@
                 </el-col>
                 <el-col :span="12">
                     <div class="div-culture2">
-                        <img src='../../assets/wenhua.png'/>
+                        <img src='@/assets/wenhua.png'/>
                     </div>      
                 </el-col>
             </el-row>

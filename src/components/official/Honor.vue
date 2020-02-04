@@ -19,7 +19,7 @@
                     <div class="honor-div-item-size">
                         <div>年度消费电子领先品牌十强</div>
                         <div class="honor-img-mg">
-                            <img src='../../assets/honor-item1.jpg' class="honor-img-size"/>
+                            <img src='@/assets/honor-item1.jpg' class="honor-img-size"/>
                         </div>
                     </div>
                 </el-col>
@@ -27,7 +27,7 @@
                     <div class="honor-div-item-size">
                         <div> 2019年电子信息行业十大公益项目—京东方“照亮成长路”公益项目</div>
                         <div class="honor-img-mg">
-                             <img src='../../assets/honor-item2.jpg' class="honor-img-size"/>
+                             <img src='@/assets/honor-item2.jpg' class="honor-img-size"/>
                         </div>
                     </div>
                 </el-col>
@@ -35,7 +35,7 @@
                     <div class="honor-div-item-size">
                         <div> 2019重承诺守信用放心品牌</div>
                         <div class="honor-img-mg">
-                             <img src='../../assets/honor-item3.gif' class="honor-img-size"/>
+                             <img src='@/assets/honor-item3.gif' class="honor-img-size"/>
                         </div>
                     </div>
                 </el-col>
@@ -43,7 +43,7 @@
                     <div class="honor-div-item-size">
                        <div> 2019中国上市公司品牌价值榜 海外榜 五十强</div>
                        <div class="honor-img-mg">
-                            <img src='../../assets/honor-item4.jpg' class="honor-img-size"/>
+                            <img src='@/assets/honor-item4.jpg' class="honor-img-size"/>
                        </div>
                     </div>
                 </el-col>

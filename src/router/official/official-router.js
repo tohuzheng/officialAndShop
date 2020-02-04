@@ -1,4 +1,4 @@
-import officialWelcome from '@/pages/official/Welcome.vue'
+import officialWelcome from '@/components/official/Welcome.vue'
 import officialIndex from '@/pages/official/Index'
 
 export default [

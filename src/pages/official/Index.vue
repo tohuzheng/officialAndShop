@@ -77,11 +77,11 @@
 </template>
 
 <script>
-import welcome from './Welcome.vue'
-import navi from './Navi.vue'
-import introduction from './Introduction'
-import culture from './Culture'
-import honor from './Honor'
+import welcome from '@/components/official/Welcome.vue'
+import navi from '@/components/official/Navi.vue'
+import introduction from '@/components/official/Introduction'
+import culture from '@/components/official/Culture'
+import honor from '@/components/official/Honor'
 
 export default {
     components:{
