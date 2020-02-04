@@ -1,6 +1,7 @@
 # official-shop
 
 > A Vue.js project
+> 这是一个企业官网+新闻+电子商城的综合项目，重点编写电子商城
 
 ## Build Setup
 
