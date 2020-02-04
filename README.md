@@ -33,6 +33,7 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 项目远程仓库地址：https://github.com/tohuzheng/officialAndShop
 
 ~~~
+```
 #目录结构
 |--build  组建项目的配置文件，webpack配置文件等
 |--config  项目开发的配置文件
@@ -85,6 +86,7 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 6.package.json为项目依赖资源，如果要运行这个项目需要使用cnpm install安装依赖项（直接在项目文件夹路径下执行）
 7.使用命令cnpm run dev启动项目，浏览器会打开 http://localhost:8080/#/ 看到vue的log页面
 8.编译打包 cnpm run build
+```
 
 #备注
 ### 常用Git命令清单
