@@ -32,6 +32,7 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 纯Vue手工制作，使用ElementUI.以及路由vue-router，axios等技术综合
 项目远程仓库地址：https://github.com/tohuzheng/officialAndShop
 
+~~~
 #目录结构
 |--build  组建项目的配置文件，webpack配置文件等
 |--config  项目开发的配置文件
