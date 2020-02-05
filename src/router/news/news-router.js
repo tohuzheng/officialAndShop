@@ -3,6 +3,7 @@ import Dynamics from '@/components/news/IndustryDynamics.vue'
 import HotTopics from '@/components/news/HotTopics.vue'
 import HotMessage from '@/components/news/HotMessage.vue'
 import NewsSearch from '@/components/news/SearchResult.vue'
+import DynamicsDetial from '@/components/news/DynamicsDetial.vue'
 
 export default [
     {
@@ -28,6 +29,10 @@ export default [
             {
                 path:"/newsSearch",
                 component:NewsSearch
+            },
+            {
+                path:"/newsDetial",
+                component:DynamicsDetial
             }
         ]
     },
