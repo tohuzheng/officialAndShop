@@ -14,13 +14,9 @@
                 <el-menu-item index="4-3">企业荣誉</el-menu-item>
             </el-submenu>
             <el-menu-item index="3" @click='toShop'>企业产品</el-menu-item>
-            <el-submenu index="2">
-                <template slot="title">新闻中心</template>
-                <el-menu-item index="2-1">行业动态</el-menu-item>
-                <el-menu-item index="2-2">热点资讯</el-menu-item>
-                <el-menu-item index="2-3">热点话题</el-menu-item>
-            </el-submenu>
-            <el-menu-item index="5">防伪查询</el-menu-item>
+            <el-menu-item index="6" @click='toNews'>新闻中心</el-menu-item>
+            
+            <el-menu-item index="5" @click="toOnlyProduct">防伪查询</el-menu-item>
         </el-menu>
     </div>
 </template>
@@ -39,6 +35,12 @@ export default {
       },
       toOfficial:function(){
           this.$router.push('/officialIndex')
+      },
+      toNews:function(){
+          this.$router.push('/news');
+      },
+      toOnlyProduct:function(){
+          this.$router.push('/onlyProduct');
       }
     }
 }

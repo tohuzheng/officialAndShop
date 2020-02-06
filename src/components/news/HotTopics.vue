@@ -50,6 +50,9 @@
 </template>
 
 <script>
+/**
+ * 热门话题页面组件
+ */
 export default {
     components: {},
     data() {

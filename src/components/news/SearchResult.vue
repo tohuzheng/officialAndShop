@@ -47,6 +47,9 @@
 </template>
 
 <script>
+/**
+ * 新闻搜索展示组件
+ */
 export default {
     components: {},
     data() {

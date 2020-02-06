@@ -50,6 +50,9 @@
 </template>
 
 <script>
+/**
+ * 行业动态页面组件
+ */
 export default {
     components: {},
     data() {
