@@ -42,7 +42,8 @@
 
 <style>
 .tile-div{
-    margin: 5px 0px 0px 0px;
+    margin: 5px 0px auto;
+    background-color: #B3C0D1;
 }
 
 .title-div{

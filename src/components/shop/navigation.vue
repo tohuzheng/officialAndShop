@@ -10,7 +10,7 @@
       <el-menu-item index="1">首页</el-menu-item>
       <el-menu-item index="3" @click="officialIdex">了解企业</el-menu-item>
       <el-menu-item index="5">我的收藏</el-menu-item>
-      <el-menu-item index="6">我的购物车</el-menu-item>
+      <el-menu-item index="6" @click="toBuyCar">我的购物车</el-menu-item>
       <el-menu-item index="8">我的订单</el-menu-item>
       <el-menu-item index="9">参数对比</el-menu-item>
       <el-menu-item index="10"><div style="width:450px;"></div></el-menu-item>
@@ -42,6 +42,9 @@ export default {
       },
       officialIdex:function(){
         this.$router.push("/official");
+      },
+      toBuyCar:function(){
+        this.$router.push("/buycar");
       }
     }
 };

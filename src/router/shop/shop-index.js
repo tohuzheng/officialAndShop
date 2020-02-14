@@ -6,7 +6,8 @@ import SearchOnlyCode from '@/components/shop/SearchOnlyProduct.vue'
 import SearchOnlyCodeResult from '@/components/shop/SearchOnlyProductResult.vue'
 import Register from '@/pages/shop/Register.vue'
 import shop from '@/pages/shop/Shop.vue'
-import Index from '@/pages/shop/index'
+import Index from '@/pages/shop/index.vue'
+import buycar from '@/pages/shop/BuyCar.vue'
 
 export default [
  
@@ -24,6 +25,10 @@ export default [
           {
             path: '/index',
             component: Index
+          },
+          {
+            path: '/buycar',
+            component: buycar
           }
         ]
       },
