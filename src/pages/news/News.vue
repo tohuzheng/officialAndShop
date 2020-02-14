@@ -51,7 +51,7 @@ export default {
             }
         },
         toOfficial:function(){
-            this.$router.push("/officialIndex");
+            this.$router.push("/official");
         }
     },
     created:function(){

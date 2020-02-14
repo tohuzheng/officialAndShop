@@ -1,11 +1,12 @@
 
 import login from '@/pages/shop/login'
-import Index from '@/pages/shop/index'
 import shopClass from '@/pages/shop/shopClass'
 import onlyProduct from '@/pages/shop/OnlyProduct.vue'
 import SearchOnlyCode from '@/components/shop/SearchOnlyProduct.vue'
 import SearchOnlyCodeResult from '@/components/shop/SearchOnlyProductResult.vue'
 import Register from '@/pages/shop/Register.vue'
+import shop from '@/pages/shop/Shop.vue'
+import Index from '@/pages/shop/index'
 
 export default [
  
@@ -15,9 +16,16 @@ export default [
         component: login
       },
       {
-        path: '/',
-        name: 'index',
-        component: Index
+        path: '/shop',
+        name: 'shop',
+        component: shop,
+        redirect: '/index',
+        children: [
+          {
+            path: '/index',
+            component: Index
+          }
+        ]
       },
       {
         path: '/shopClass',

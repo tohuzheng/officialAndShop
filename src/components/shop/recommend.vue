@@ -98,6 +98,9 @@
 </template>
 
 <script>
+/**
+ * 首页猜你喜欢部分组件
+ */
 export default {
     
 }

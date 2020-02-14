@@ -8,7 +8,7 @@
       active-text-color="#ffd04b"
     >
       <el-menu-item index="1">首页</el-menu-item>
-      <el-menu-item index="3">了解企业</el-menu-item>
+      <el-menu-item index="3" @click="officialIdex">了解企业</el-menu-item>
       <el-menu-item index="5">我的收藏</el-menu-item>
       <el-menu-item index="6">我的购物车</el-menu-item>
       <el-menu-item index="8">我的订单</el-menu-item>
@@ -39,6 +39,9 @@ export default {
     methods:{
       toRegister:function(){
         this.$router.push("/register");
+      },
+      officialIdex:function(){
+        this.$router.push("/official");
       }
     }
 };

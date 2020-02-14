@@ -7,10 +7,15 @@ export default [
       path: '/officialWelcome',
       name: 'officialWelcome',
       component: officialWelcome
-    },{
-      path: '/officialIndex',
-      name: 'officialIndex',
+    },
+    {
+      path: '/official',
+      name: 'official',
       component: officialIndex
+    },
+    { //设置默认页面
+      path: '/',
+      redirect: '/official'
     }
       
 ]
