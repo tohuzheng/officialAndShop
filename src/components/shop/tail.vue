@@ -40,12 +40,14 @@
 </template>
 
 
-<style>
+<style scope>
 .tile-div{
-    margin: 5px 0px auto;
     background-color: #B3C0D1;
+    text-align: center;
 }
-
+.el-footer {
+    padding: 0px 0px;
+}
 .title-div{
     font-size: 14px;
     font-weight: 900;

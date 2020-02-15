@@ -27,12 +27,14 @@
             </el-col>
           </el-row>
       </div>
+
+      <el-checkbox-group v-model="checkedShopList">
       <!--单个商品显示框开始-->
       <div class="one-shop-div" v-for="i in 5" :key="i">
         <el-row>
             <el-col :span="1">
                 <div class="one-shop-checkbox">
-                    <el-checkbox :lable=1></el-checkbox>
+                    <el-checkbox :lable="i"></el-checkbox>
                 </div>
             </el-col>
 
@@ -83,6 +85,8 @@
         </el-row>
       </div>
       <!--单个商品显示框结束-->
+      </el-checkbox-group>
+
       <div class="buy-car-tail-div">
         <div>
             <el-row>
@@ -115,7 +119,7 @@
                 </el-col>
                 <el-col :span="2">
                     <div style="padding:5px">
-                        <el-button type="primary">结算</el-button>
+                        <el-button type="primary" @click="payMoney">结算</el-button>
                     </div>
                 </el-col>
             </el-row>
@@ -136,10 +140,15 @@ export default {
            fill:"fill", //列表图片展示属性
            url:require("@/assets/phone.jpg"), //列表图片地址
            num:1, //商品数量  
+           checkAll: false,
+           checkedShopList: [],
+           isIndeterminate: true
        };
     },
     methods: {
-
+      payMoney:function(){
+          console.log(this.checkedShopList)
+      }
     },
     created() {
 

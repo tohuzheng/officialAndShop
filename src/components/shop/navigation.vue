@@ -50,7 +50,7 @@ export default {
 };
 </script>
   
-<style>
+<style scope>
   .el-header {
         padding : 0px;
   }
