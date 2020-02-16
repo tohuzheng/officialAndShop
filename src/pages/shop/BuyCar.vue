@@ -8,7 +8,7 @@
       <div class="buy-car-opreation-div">
           <el-row>
             <el-col :span="4">
-                <div><el-checkbox>全选</el-checkbox></div>
+                <div><el-checkbox :indeterminate="isIndeterminate" v-model="checkAll" @change="handleCheckAllChange">全选</el-checkbox></div>
             </el-col>
             <el-col :span="8">
                 <div>商品信息</div>
@@ -28,71 +28,72 @@
           </el-row>
       </div>
 
-      <el-checkbox-group v-model="checkedShopList">
       <!--单个商品显示框开始-->
-      <div class="one-shop-div" v-for="i in 5" :key="i">
-        <el-row>
-            <el-col :span="1">
-                <div class="one-shop-checkbox">
-                    <el-checkbox :lable="i"></el-checkbox>
-                </div>
-            </el-col>
+      <div>
+           <el-checkbox-group v-model="checkedIds" @change="handleCheckedChange">
+               <div v-for="(item,index) in shopData" :key="index" class="one-shop-div">
+                   <el-row>
+                        <el-col :span="1">
+                            <div class="item-checkbox">
+                                <el-checkbox :label="item.id">{{""}}</el-checkbox>
+                            </div>
+                        </el-col>
+                        <el-col :span="3">
+                            <div class="item-image">
+                                <el-image
+                                style="width: 100px; height: 100px"
+                                :src="item.imgUrl"
+                                fit="fill">
+                                </el-image>
+                            </div>   
+                        </el-col>
 
-            <el-col :span="3">
-                <div class="shop-image">
-                    <el-image
-                    style="width: 100px; height: 100px"
-                    :src="url"
-                    :fit="fill">
-                    </el-image>
-                </div>   
-            </el-col>
+                        <el-col :span="4">
+                            <div class="item-title">
+                                <el-link>{{item.title}}</el-link>
+                            </div>
+                        </el-col>
+                        <el-col :span="4">
+                            <div class="item-size">
+                                {{item.size}}
+                            </div>
+                        </el-col>
+                        
+                        <el-col :span="3">
+                            <div class="item-price">
+                                ￥{{item.price}}
+                            </div>
+                        </el-col>
 
-            <el-col :span="4">
-                <div class="title-link">
-                    <el-link>安踏男针织外套2020春季新款官网旗舰宽松休闲运动卫衣连帽外套男</el-link>
-                </div>
-            </el-col>
-            <el-col :span="4">
-                <div class="shop-size">
-                    颜色分类：黑色 尺码：XXL
-                </div>
-            </el-col>
-            
-            <el-col :span="3">
-                <div class="shop-one-price">
-                    ￥198.00
-                </div>
-            </el-col>
+                        <el-col :span="4">
+                            <div class="item-number">
+                                <el-input-number size="small" v-model="item.number" :min="1" :max="10" label="产品数量"></el-input-number>
+                            </div>
+                        </el-col>
 
-            <el-col :span="4">
-                <div class="shop-number">
-                    <el-input-number size="small" v-model="num" :min="1" :max="10" label="产品数量"></el-input-number>
-                </div>
-            </el-col>
+                        <el-col :span="3">
+                            <div class="item-sum-money">
+                                <label>￥{{item.sumMoney}}</label>
+                            </div>
+                        </el-col>
 
-            <el-col :span="3">
-                <div class="shop-sum-price">
-                    <label>￥198.00</label>
-                </div>
-            </el-col>
-
-            <el-col :span="2">
-                <div class="del-shop">
-                    <el-link type="info">删除</el-link>
-                </div>
-            </el-col>
-        </el-row>
+                        <el-col :span="2">
+                            <div class="del-shop">
+                                <el-link type="info">删除</el-link>
+                            </div>
+                        </el-col>
+                    </el-row>
+               </div>   
+           </el-checkbox-group>
       </div>
       <!--单个商品显示框结束-->
-      </el-checkbox-group>
 
       <div class="buy-car-tail-div">
         <div>
             <el-row>
                 <el-col :span="2">
                     <div style="margin:5px 0px;padding:5px">
-                        <el-checkbox>全选</el-checkbox>
+                        <el-checkbox :indeterminate="isIndeterminate" v-model="checkAll" @change="handleCheckAllChange">全选</el-checkbox>
                     </div>
                 </el-col>
                 <el-col :span="2">
@@ -137,17 +138,100 @@ export default {
     components: {},
     data() {
        return {
-           fill:"fill", //列表图片展示属性
-           url:require("@/assets/phone.jpg"), //列表图片地址
-           num:1, //商品数量  
+           shopData: [
+               {
+                   id: 1,
+                   imgUrl: require("@/assets/phone.jpg"),
+                   title: "安踏男针织外套2020春季新款官网旗舰宽松休闲运动卫衣连帽外套男",
+                   size: "黑色：XXL",
+                   price: 198.00,
+                   number: 1,
+                   sumMoney: 198.00
+               },
+               {
+                   id: 2,
+                   imgUrl: require("@/assets/phone.jpg"),
+                   title: "安踏男针织外套2020春季新款官网旗舰宽松休闲运动卫衣连帽外套男",
+                   size: "黑色：XXL",
+                   price: 198.00,
+                   number: 1,
+                   sumMoney: 198.00
+               },
+               {
+                   id: 3,
+                   imgUrl: require("@/assets/phone.jpg"),
+                   title: "安踏男针织外套2020春季新款官网旗舰宽松休闲运动卫衣连帽外套男",
+                   size: "黑色：XXL",
+                   price: 198.00,
+                   number: 1,
+                   sumMoney: 198.00
+               },
+               {
+                   id: 4,
+                   imgUrl: require("@/assets/phone.jpg"),
+                   title: "安踏男针织外套2020春季新款官网旗舰宽松休闲运动卫衣连帽外套男",
+                   size: "黑色：XXL",
+                   price: 198.00,
+                   number: 1,
+                   sumMoney: 198.00
+               },
+               {
+                   id: 5,
+                   imgUrl: require("@/assets/phone.jpg"),
+                   title: "安踏男针织外套2020春季新款官网旗舰宽松休闲运动卫衣连帽外套男",
+                   size: "黑色：XXL",
+                   price: 198.00,
+                   number: 1,
+                   sumMoney: 198.00
+               },
+               {
+                   id: 6,
+                   imgUrl: require("@/assets/phone.jpg"),
+                   title: "安踏男针织外套2020春季新款官网旗舰宽松休闲运动卫衣连帽外套男",
+                   size: "黑色：XXL",
+                   price: 198.01,
+                   number: 1,
+                   sumMoney: 198.00
+               },
+               {
+                   id: 7,
+                   imgUrl: require("@/assets/phone.jpg"),
+                   title: "安踏男针织外套2020春季新款官网旗舰宽松休闲运动卫衣连帽外套男",
+                   size: "黑色：XXL",
+                   price: 198.00,
+                   number: 1,
+                   sumMoney: 198.00
+               }
+           ], 
            checkAll: false,
-           checkedShopList: [],
-           isIndeterminate: true
+           checkedIds: [],
+           isIndeterminate: false
        };
     },
     methods: {
       payMoney:function(){
-          console.log(this.checkedShopList)
+          console.log(this.checkedIds)
+      },
+      oneChack:function(val,id){
+          console.log(val)
+          console.log(id)
+      },
+      handleCheckAllChange:function(value){ //是否点击全选
+          let data=[1,2,3,4,5,6,7];
+          this.checkedIds = value ? data:[];
+          this.isIndeterminate = false;
+      },
+      handleCheckedChange:function(val){ //检查每一次单个选择是否最后全部都勾选了
+          if(val.length == this.shopData.length){
+              this.checkAll = true;
+              this.isIndeterminate = false;  
+          }else if(val.length == 0){
+              this.isIndeterminate = false;
+              this.checkAll = false;
+          }else{
+              this.isIndeterminate = true;
+              this.checkAll = false;
+          }
       }
     },
     created() {
@@ -210,37 +294,46 @@ export default {
         width: 988px;
         height: 130px;
     }
-
-    .one-shop-checkbox{
-        padding: 5px 10px;
-        margin: 10px 0px;
+    .item-checkbox{
+        padding: 10px;
+        
     }
-    .shop-image{
-        margin: 10px 0px;
+    .item-image{
+         margin-top: 10px;
+        
     }
-    .title-link{
-        padding: 15px 0px;
-        margin: auto 0px;
+    .item-title{
+         overflow:hidden; /* 溢出隐藏 */
+         font-size: 12px;
+        color: #3c3c3c;
+        padding: 20px 0px;
     }
-    .shop-size{
-       font-size:12px;
-       padding: 15px 10px;
-       color: #9C9C9C;
+    .item-price{
+        margin-top: 20px;
+        font-size: 12px;
+        font-weight: 700;
+        padding: 0px 10px;
     }
-    .shop-one-price{
-        color: #000;
-        font-weight: 600;
-        padding: 15px;
+    .item-size{
+        margin-top: 20px;
+        padding: 0px 20px;
+        font-size: 12px;
+        font-weight: 500;
+        color: #9c9c9c; 
+        overflow:hidden; /* 溢出隐藏 */
     }
-    .shop-number{
-        margin: 15px 0px;
+    .item-number{
+        margin-top: 20px;
+        
     }
-    .shop-sum-price{
+    .item-sum-money{
+        margin-top: 20px;
+        font-size: 12px;
+        font-weight: 700;
         color: #FF4400;
-        margin: 15px 0px;
-        font-weight: 600;
+        padding: 0px 10px;
     }
     .del-shop{
-        margin: 15px 0px;
+        margin: 20px 0px;
     }
 </style>
