@@ -61,7 +61,7 @@
                         
                         <el-col :span="3">
                             <div class="item-price">
-                                ￥{{item.price}}
+                                ￥{{formatFloat(item.price)}}
                             </div>
                         </el-col>
 
@@ -73,7 +73,7 @@
 
                         <el-col :span="3">
                             <div class="item-sum-money">
-                                <label>￥{{item.sumMoney}}</label>
+                                <label>￥{{formatFloat(item.sumMoney)}}</label>
                             </div>
                         </el-col>
 
@@ -232,6 +232,17 @@ export default {
               this.isIndeterminate = true;
               this.checkAll = false;
           }
+      },
+      formatFloat:function(val){ //格式化显示小数
+        function isInteger(obj) { //判断是否是整数
+            return obj%1 === 0
+        }
+
+        if(isInteger(3)){ //是整数则末尾加.00
+            return val+".00";
+        }else{
+            return val;
+        }
       }
     },
     created() {
