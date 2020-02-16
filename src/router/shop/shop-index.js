@@ -8,11 +8,12 @@ import Register from '@/pages/shop/Register.vue'
 import shop from '@/pages/shop/Shop.vue'
 import Index from '@/pages/shop/index.vue'
 import buycar from '@/pages/shop/BuyCar.vue'
+import order from '@/pages/shop/Order.vue'
 
 export default [
  
       {
-        path: '/login',
+        path: '/login',  //商城登录路由
         name: 'login',
         component: login
       },
@@ -29,6 +30,10 @@ export default [
           {
             path: '/buycar',
             component: buycar
+          },
+          {
+            path: '/order',
+            component: order
           }
         ]
       },
@@ -38,7 +43,7 @@ export default [
         component: shopClass
       },
       {
-        name:'onlyProduct',
+        name:'onlyProduct',  //查询防伪码路由
         path:'/onlyProduct',
         component:onlyProduct,
         redirect:'/searchOnlyCode',

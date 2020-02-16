@@ -212,10 +212,6 @@ export default {
       payMoney:function(){
           console.log(this.checkedIds)
       },
-      oneChack:function(val,id){
-          console.log(val)
-          console.log(id)
-      },
       handleCheckAllChange:function(value){ //是否点击全选
           let data=[1,2,3,4,5,6,7];
           this.checkedIds = value ? data:[];
