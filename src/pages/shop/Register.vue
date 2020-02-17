@@ -45,10 +45,10 @@
                         <el-input v-model="authCode" 
                         placeholder="输入验证码" 
                         prefix-icon="el-icon-chat-dot-square"
-                        style="width:150px"
+                        style="width:145px"
                         clearable></el-input>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <el-button type="primary">获取验证码</el-button>
+                        
+                        <el-button type="info" @click="getAuthCode" style="width:150px;" :disabled="btuFlag">{{authButtonMsg}}</el-button>
                       </div>
 
                       <div class="input-item">
@@ -72,7 +72,8 @@ export default {
            password2:"",
            authCode:"",
            email:"",
-           authButtonMsg:"获取验证码"
+           authButtonMsg:"获取验证码",
+           btuFlag:false,
        };
     },
     methods: {
@@ -81,6 +82,20 @@ export default {
         },
         toLogin:function(){
            this.$router.push('/login');
+        },
+        getAuthCode:function(){ //获取验证码函数
+            let count = 60;
+            this.btuFlag = true;
+            const that = this;
+            let timer=setInterval(function(){ //获取验证码定时器
+                    count--;
+                    that.authButtonMsg = `${count}s后获取验证码`;
+                    if (count <=0) {
+                        clearInterval(timer);
+                        that.authButtonMsg = "获取验证码";
+                        that.btuFlag = false;
+                    }
+                },1000);
         }
     },
     created() {
