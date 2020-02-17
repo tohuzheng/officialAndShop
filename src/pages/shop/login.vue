@@ -1,27 +1,43 @@
 <template>
-    <div class="login-div">
-        <el-form  status-icon  ref="ruleForm" label-width="100px" >
-            <div class="from-item-div">
-                <el-form-item label="账号" prop="username">
-                    <el-input type="text" v-model="username"></el-input>
-                </el-form-item>
-            </div>
+    <div class="parent-div">
+        <div class="login-div">
+            <el-card class="box-card">
+                <div slot="header" class="clearfix">
+                    <span>登录</span>
+                    <el-button style="float: right; padding: 3px 0" type="text" @click="toRegister">去注册</el-button>
+                </div>
+                <!--下面是登录框-->
+                <div>
+                    <el-form  status-icon  ref="ruleForm" label-width="100px" >
+                        <div class="from-item-div">
+                            <el-form-item label="账号" prop="username">
+                                <el-input type="text" v-model="username"></el-input>
+                            </el-form-item>
+                        </div>
 
-            <div class="from-item-div">
-            <el-form-item label="密码" prop="password">
-                <el-input type="password" v-model="password"></el-input>
-            </el-form-item>
-            </div>
+                        <div class="from-item-div">
+                        <el-form-item label="密码" prop="password">
+                            <el-input type="password" v-model="password"></el-input>
+                        </el-form-item>
+                        </div>
 
-            <div class="from-item-div">
-            <el-form-item>
-                <el-button type="primary" @click='submitLogin'>提交</el-button>
-                <el-button @click="resete">重置</el-button>
-            </el-form-item>
-            </div>
-
-        </el-form>
-    </div> 
+                        <div class="from-item-div">
+                        <el-form-item>
+                            <div>
+                                <div style="float:left;">
+                                    <el-button type="primary" @click='submitLogin'>提交</el-button>
+                                </div>
+                                <div style="float:left;margin:0px 80px">
+                                    <el-button @click="resete">重置</el-button>
+                                </div>
+                            </div>   
+                        </el-form-item>
+                        </div>
+                    </el-form>
+                </div> 
+            </el-card>
+        </div>
+    </div>
 </template>
 
 <script>
@@ -76,6 +92,9 @@ export default {
                 console.log(data)
                 alert(data.data)
             });
+        },
+        toRegister:function(){
+            this.$router.push("/register");
         }
     },
     created(){
@@ -89,14 +108,16 @@ export default {
 </script>
 
 <style>
+.parent-div{
+    background: url("../../assets/login-background.jpg");
+    border: 1px white solid;
+}
 .login-div{
     width: 500px;
-    height: 350px;
-    margin: 10% auto auto 30%;
-    
-
+    height: 255px;
+    margin: 100px 100px 50px 630px;
 }
 .from-item-div{
-    text-align: left;
+    text-align: center;
 }
 </style>

@@ -7,7 +7,7 @@
       text-color="#fff"
       active-text-color="#ffd04b"
     >
-      <el-menu-item index="1">首页</el-menu-item>
+      <el-menu-item index="1" @click="toIndex">首页</el-menu-item>
       <el-menu-item index="3" @click="officialIdex">了解企业</el-menu-item>
       <el-menu-item index="5">我的收藏</el-menu-item>
       <el-menu-item index="6" @click="toBuyCar">我的购物车</el-menu-item>
@@ -37,6 +37,9 @@ export default {
         };
     },
     methods:{
+      toIndex:function(){
+        this.$router.push("/shop");
+      },
       toRegister:function(){
         this.$router.push("/register");
       },
