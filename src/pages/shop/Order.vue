@@ -2,23 +2,23 @@
   <div class="tabs-div">
     <el-tabs v-model="activeName" @tab-click="handleClick">
         <el-tab-pane label="所有订单" name="first">
-            <orderList/>
-        </el-tab-pane>
+            <orderList status = '1'/>
+        </el-tab-pane> 
 
         <el-tab-pane label="待发货" name="second">
-            <orderList/>
+            <orderList  status = '2'/>
         </el-tab-pane>
 
         <el-tab-pane label="待收货" name="third">
-            <orderList/>
+            <orderList  status = '3'/>
         </el-tab-pane>
 
         <el-tab-pane label="待付款" name="fourth">
-            <orderList/>
+            <orderList  status = '4'/>
         </el-tab-pane>
 
         <el-tab-pane label="已完成" name="fiveth">
-            <orderList/>
+            <orderList  status = '5'/>
         </el-tab-pane>
     </el-tabs>
     
@@ -39,7 +39,7 @@ export default {
     },
     methods: {
       handleClick(tab, event) {
-        console.log(tab, event);
+        //console.log(tab, event);
       }
     },
     created() {

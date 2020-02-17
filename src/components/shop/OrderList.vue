@@ -30,7 +30,7 @@
       <table width="100%">
         <tbody>
           <tr>
-            <td class="table-td table-td1">产品</td>
+            <td class="table-td table-td1">产品{{status}}</td>
             <td class="table-td">单价</td>
             <td class="table-td">数量</td>
             <td class="table-td">商品操作</td>
@@ -176,8 +176,13 @@ export default {
       ]
     };
   },
-  methods: {},
-  created() {}
+  methods: {
+
+  }, 
+  props:['status'],
+  created() {
+
+  }
 };
 </script>
 
@@ -218,7 +223,7 @@ export default {
 }
 .table-td1 {
   width: 40%;
-}
+} 
 .tbody-head-td-date {
   width: 20%;
   font-size: 13px;
