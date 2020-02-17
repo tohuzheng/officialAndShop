@@ -8,19 +8,11 @@
       <div class="search-button">
         <el-button type="primary">查询</el-button>
       </div>
-
-      <!-- <div class="more-search-condition">
-        <el-button type="text" style="color:black;">
-          更多筛选条件
-          <span class="el-icon-arrow-down"></span>
-        </el-button>
-      </div> -->
-
     </div>
 
     <div style="height:70px;"></div><!--占空地方-->
 
-    <div class="date-select">
+    <div class="date-select" style="text-align:left;">
       <div class="block">
         <el-date-picker
           v-model="dateSearch"
@@ -53,7 +45,7 @@
     <div style="height:30px;"></div>
 
     <!--列表数据展示开始-->
-    <div style="margin:20px 0px" v-for="(item,index) in orderData" :key="index">
+    <div style="margin:20px 0px;border:1px #ececec solid;" v-for="(item,index) in orderData" :key="index">
       <div class="list-body-div">
         <table width="100%">
           <tbody>
@@ -231,7 +223,8 @@ export default {
   width: 20%;
   font-size: 13px;
   font-weight: 700;
-  padding: 7px 30px;
+  padding: 7px 20px;
+  text-align: left;
 }
 .tbody-head-td-order-id {
   width: 20%;
