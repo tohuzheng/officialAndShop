@@ -6,19 +6,19 @@
         </el-tab-pane>
 
         <el-tab-pane label="待发货" name="second">
-            待发货
+            <orderList/>
         </el-tab-pane>
 
         <el-tab-pane label="待收货" name="third">
-            待收货
+            <orderList/>
         </el-tab-pane>
 
         <el-tab-pane label="待付款" name="fourth">
-            待付款
+            <orderList/>
         </el-tab-pane>
 
         <el-tab-pane label="已完成" name="fiveth">
-            已完成
+            <orderList/>
         </el-tab-pane>
     </el-tabs>
     
@@ -34,7 +34,7 @@ export default {
     components: {orderList},
     data() {
        return {
-           activeName: 'second',
+           activeName: 'first',
        };
     },
     methods: {
