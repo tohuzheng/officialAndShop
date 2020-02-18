@@ -65,6 +65,9 @@
 </template>
 
 <script>
+/**
+品类详细页（仅参考，无实际使用）
+ */
 export default {
     
 }

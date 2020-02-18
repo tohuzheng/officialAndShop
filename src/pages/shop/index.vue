@@ -15,10 +15,10 @@
 
 <script>
 //商城首页中间内容核心组件
-import carousel from '@/components/shop/carousel'
-import leftNavi from '@/components/shop/leftNavi'
-import recommend from '@/components/shop/recommend'
-import newShop from '@/components/shop/newShop'
+import carousel from '@/components/shop/carousel'  //轮播图
+import leftNavi from '@/components/shop/leftNavi'   //左边导航
+import recommend from '@/components/shop/recommend'  //推荐商品
+import newShop from '@/components/shop/newShop'   //新品上新
 
 export default {
     name:"storeIndex",

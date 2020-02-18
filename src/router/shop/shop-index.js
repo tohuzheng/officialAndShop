@@ -9,6 +9,7 @@ import shop from '@/pages/shop/Shop.vue'
 import Index from '@/pages/shop/index.vue'
 import buycar from '@/pages/shop/BuyCar.vue'
 import order from '@/pages/shop/Order.vue'
+import compareProduct from '@/pages/shop/CompareProduct.vue'
 
 export default [
  
@@ -18,7 +19,7 @@ export default [
         component: login
       },
       {
-        path: '/shop',
+        path: '/shop',  //商城内路由
         name: 'shop',
         component: shop,
         redirect: '/index',
@@ -34,6 +35,10 @@ export default [
           {
             path: '/order',
             component: order
+          },
+          {
+            path: '/compare',
+            component: compareProduct
           }
         ]
       },
@@ -59,7 +64,7 @@ export default [
         ]
       },
       {
-        path:'/register',
+        path:'/register',   //注册页路由
         component:Register
       }
         
