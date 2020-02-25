@@ -8,25 +8,76 @@
           <span class="el-icon-warning"></span> 
           <span>更多详细信息可联系页面底部在线客户咨询</span>
       </div>
-      <el-divider></el-divider>
-      <!--对比内容开始-->
-      <div :class="compareHeadFlag == true? 'test-div':'test-div2'">
-          <table width="100%">
-              <thead>
-                  <tr>
-                      <td>产品信息1</td><td>产品信息2</td><td>产品信息2</td>
-                  </tr>
-              </thead>
-              <tbody>
-                  <tr>
-                      <td>产品信息3</td><td>产品信息4</td><td>产品信息5</td>
-                  </tr>
-              </tbody>
-          </table>
-      </div>
+      <hr/>
+      <!--对比内容开始，表头部分-->
+      <div class="test-div">
+          <el-row>
+            <el-col :span="4">
+                <div class="col-item-div">
+                    
+                    <div style="width:80%;padding:0px 10px;text-align:center;">
+                        <h3>对比产品</h3>
+                    </div>
+                    <div class="word-label">
+                        细节对比
+                    </div>
+                    <div class="word-label">
+                       价格对比
+                    </div>
+                    <div class="word-label">
+                        图片对比
+                    </div>
+                </div>
+            </el-col>
 
-      <div style="height:700px; background-color:red;">
-            
+            <el-col :span="4" v-for="(item,index) in shopData" :key="index">
+                <div class="shop-col-div">
+                    <div>
+                        <img :src="item.imgUrl" />
+                    </div>
+                    <div style="padding-left:20px;">
+                        <el-link>{{item.name}}</el-link>
+                    </div>
+                    <div style="padding-left:20px;margin-top:5px;">
+                        <el-link>{{item.type}}</el-link>
+                    </div>
+                </div>
+            </el-col>
+         
+        </el-row>
+      </div>
+      
+      <!--详细数据部分-->
+      <div style="margin-bottom:60px;">
+        <el-row>
+            <el-col :span="4" class="shop-col-div">
+                <div v-for="(val,index) in shopParam" :key="index" class="table-tr-div" style="padding:0px 50px;">
+                    {{val}}
+                </div>
+            </el-col>
+
+            <el-col :span="4" v-for="(item,index) in shopData" :key="index" class="shop-col-div">
+                <div class="table-tr-div">
+                    {{item.name}}
+                </div>
+                <div class="table-tr-div">
+                    {{item.name}}
+                </div>
+                <div class="table-tr-div">
+                    {{item.name}}
+                </div>
+                <div class="table-tr-div">
+                    {{item.name}}
+                </div>
+                <div class="table-tr-div">
+                    {{item.name}}
+                </div>
+                <div class="table-tr-div">
+                    {{item.name}}
+                </div>
+            </el-col>
+           
+        </el-row>
       </div>
   </div>
 </template>
@@ -41,56 +92,66 @@ export default {
     data() {
        return {
             compareHeadFlag:true,
-            tableData: [{
-            date: '2016-05-03',
-            name: '王小虎',
-            address: '上海市普陀区金沙江路 1518 弄'
-            }, {
-            date: '2016-05-02',
-            name: '王小虎',
-            address: '上海市普陀区金沙江路 1518 弄'
-            }, {
-            date: '2016-05-04',
-            name: '王小虎',
-            address: '上海市普陀区金沙江路 1518 弄'
-            }, {
-            date: '2016-05-01',
-            name: '王小虎',
-            address: '上海市普陀区金沙江路 1518 弄'
-            }, {
-            date: '2016-05-08',
-            name: '王小虎',
-            address: '上海市普陀区金沙江路 1518 弄'
-            }, {
-            date: '2016-05-06',
-            name: '王小虎',
-            address: '上海市普陀区金沙江路 1518 弄'
-            }, {
-            date: '2016-05-07',
-            name: '王小虎',
-            address: '上海市普陀区金沙江路 1518 弄'
-            }]
+            url:require("@/assets/phone.jpg"),
+            shopData: [
+                {
+                    name: "产品1",
+                    className: "生活类",
+                    price: 198.00,
+                    weight: 18,
+                    size: "200x300x200",
+                    sellDate: "2020-02-19",
+                    imgUrl: require("@/assets/phone.jpg"),
+                    title: "宝马汽车",
+                    type: "2019款 40 TFSI 豪华致雅版"
+                },
+                {
+                    name: "产品2",
+                    className: "生活类2",
+                    price: 198.00,
+                    weight: 18,
+                    size: "200x300x200",
+                    sellDate: "2020-02-19",
+                    imgUrl: require("@/assets/phone.jpg"),
+                    title: "宝马汽车",
+                    type: "2019款 40 TFSI 豪华致雅版"
+                },
+                {
+                    name: "产品3",
+                    className: "生活类3",
+                    price: 198.00,
+                    weight: 18,
+                    size: "200x300x200",
+                    sellDate: "2020-02-19",
+                    imgUrl: require("@/assets/phone.jpg"),
+                    title: "宝马汽车",
+                    type: "2019款 40 TFSI 豪华致雅版"
+                },
+                {
+                    name: "产品4",
+                    className: "生活类4",
+                    price: 198.00,
+                    weight: 18,
+                    size: "200x300x200",
+                    sellDate: "2020-02-19",
+                    imgUrl: require("@/assets/phone.jpg"),
+                    title: "宝马汽车",
+                    type: "2019款 40 TFSI 豪华致雅版"
+                }
+            ],
+            shopParam:["产品价格","售后政策","产品重量(kg)","产品尺寸(mm)","标准电压","最大公率"]
        };
     },
     methods: {
       goBack:function() {
-        console.log('go back');
-      },
-      handleScroll:function(){
-           var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
-           //console.log(scrollTop)
-           if(scrollTop > 242){
-                this.compareHeadFlag = false;
-           }else{
-                this.compareHeadFlag = true;
-           }
+        this.$router.go(-1);
       }
     },
     created() {
         
     },
     mounted() {
-        window.addEventListener('scroll', this.handleScroll);
+       
     }
 };
 </script>
@@ -109,12 +170,41 @@ export default {
     margin-top: 50px;
 }
 .test-div{
-    background-color: antiquewhite;
+    background-color: white;
 }
 .test-div2{
-    background-color: antiquewhite;
+    background-color: white;
     width: 100%;
     position: fixed;
     top: 0px;
 }
+.col-item-div{
+    text-align: center;
+    border: #e1e1e1 1px solid;
+    height: 180px;
+}
+.word-label{
+    width:80%;
+    padding:0px 10px;
+    text-align:center;
+    font-size: 14px;
+    margin: 5px 0px;
+}
+.shop-col-div{
+    border-right: #e1e1e1 1px solid;
+    border-top: #e1e1e1 1px solid;
+    border-bottom: #e1e1e1 1px solid;
+    height:180px;
+}
+.table-tr-div{
+    border-bottom: #e1e1e1 1px solid;
+    height: 29px;
+}
+
+img{  
+    width: auto;  
+    height: auto;  
+    max-width: 150px;  
+    max-height: 100px;     
+} 
 </style>

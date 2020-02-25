@@ -66,7 +66,7 @@
           <tbody>
             <tr>
               <td style="width:110px;">
-                <el-image style="width: 100px; height: 100px" :src="orderData[0].imgUrl" fit="fill"></el-image>
+                <img style="width: 100px; height: 100px" :src="orderData[0].imgUrl" />
               </td>
               <td style="width:30%;">
                 <div style="font-size:12px; padding:10px;">{{orderData[0].title}}</div>

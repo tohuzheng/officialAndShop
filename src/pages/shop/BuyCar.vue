@@ -40,11 +40,9 @@
                         </el-col>
                         <el-col :span="3">
                             <div class="item-image">
-                                <el-image
+                                <img
                                 style="width: 100px; height: 100px"
-                                :src="item.imgUrl"
-                                fit="fill">
-                                </el-image>
+                                :src="item.imgUrl"/>
                             </div>   
                         </el-col>
 
