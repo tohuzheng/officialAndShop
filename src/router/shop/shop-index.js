@@ -10,6 +10,10 @@ import Index from '@/pages/shop/index.vue'
 import buycar from '@/pages/shop/BuyCar.vue'
 import order from '@/pages/shop/Order.vue'
 import compareProduct from '@/pages/shop/CompareProduct.vue'
+import person from '@/pages/shop/PersonData.vue'
+import messige from '@/pages/shop/Messige.vue'
+import myFootprint from '@/pages/shop/MyFootprint.vue'
+import shopDetail from '@/pages/shop/ShopDetail.vue'
 
 export default [
  
@@ -39,6 +43,22 @@ export default [
           {
             path: '/compare',
             component: compareProduct
+          },
+          {
+            path: '/person',
+            component: person
+          },
+          {
+            path: '/messige',
+            component: messige
+          },
+          {
+            path: '/myfootprint',
+            component: myFootprint
+          },
+          {
+            path: '/detail/:shopId',  //商品详细页
+            component: shopDetail
           }
         ]
       },

@@ -1,10 +1,12 @@
 <template>
-  <div></div>
+  <div>
+
+  </div>
 </template>
 
 <script>
 /**
-  商品详细业，点击某个商品跳转的页面
+ * 消息页
  */
 export default {
     components: {},
