@@ -1,7 +1,9 @@
 <template>
   <div class="max-div">
-    商品id：{{shopId}}
-    <div style="height:100px;"></div>
+    <!-- 商品id：{{shopId}} -->
+    <div style="height:100px; padding-top:50px;">
+      <span class="logo-word">企业产品在线系统欢迎你</span>
+    </div>
     <el-divider></el-divider>
     <div>
       <div class="shop-img-div">
@@ -52,8 +54,12 @@
           </div>
       </div>
     </div>
-    <div style="margin-top:400px;">
-      正品保证 七年保修
+    <div class="tail-div">
+      <div style="font-size:18px;padding:20px 50px;">
+         <span>100% 正品保证 七年保修</span> <span style="margin-left:100px;">天天有优惠</span>
+         <span style="margin-left:300px;">客服</span> 
+         <span> <el-link target="_blank" @click="toKeFu">在线客服</el-link> </span>
+      </div>
     </div>
   </div>
 </template>
@@ -66,18 +72,27 @@ export default {
     components: {},
     data() {
        return {
-         shopId:0,
-         chima:'L',
-         num:1, //购买商品数量
+         shopId: 0,
+         chima: 'L',
+         num: 1, //购买商品数量
        };
     },
     methods: {
-      getParam:function(){  // 获取参数商品id
-           this.shopId = this.$route.params.shopId;
-      },
-      handleChange:function(value) {
-        console.log(value);
-      }
+        getParam:function(){  // 获取参数商品id
+            this.shopId = this.$route.params.shopId;
+        },
+        handleChange:function(value) { // 点击加减号就会触发该函数
+          console.log(value);
+        },
+        toKeFu:function(){  // 跳转页面，打开新窗口
+
+          let routeData = this.$router.resolve({
+            path: "/customerService",
+            query: { }
+          });
+          window.open(routeData.href, '_blank');
+
+        }
     },
     created() {
         this.getParam();
@@ -106,5 +121,14 @@ export default {
   height: 100px;
   text-align: left;
   background-color: #e7e7e7;
+}
+.tail-div{
+  margin-top:450px;
+  border-top: #e7e7e7 2px dashed;
+  border-bottom: #e7e7e7 2px dashed;
+  margin-bottom: 100px;
+}
+.logo-word{
+  font-size: 36px;
 }
 </style>

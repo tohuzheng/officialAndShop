@@ -14,6 +14,7 @@ import person from '@/pages/shop/PersonData.vue'
 import messige from '@/pages/shop/Messige.vue'
 import myFootprint from '@/pages/shop/MyFootprint.vue'
 import shopDetail from '@/pages/shop/ShopDetail.vue'
+import customerService from '@/pages/shop/CustomerService.vue'
 
 export default [
  
@@ -68,24 +69,29 @@ export default [
         component: shopClass
       },
       {
-        name:'onlyProduct',  //查询防伪码路由
-        path:'/onlyProduct',
+        name: 'onlyProduct',  //查询防伪码路由
+        path: '/onlyProduct',
         component:onlyProduct,
-        redirect:'/searchOnlyCode',
+        redirect: '/searchOnlyCode',
         children:[
           {
-            path:'/searchOnlyCode',
+            path: '/searchOnlyCode',
             component:SearchOnlyCode
           },
           {
-            path:'/searchOnlyCodeResult',
+            path: '/searchOnlyCodeResult',
             component:SearchOnlyCodeResult
           }
         ]
       },
       {
-        path:'/register',   //注册页路由
+        path: '/register',   //客户注册页路由
         component:Register
+      },
+      {
+        path: '/customerService',  // 客服中心
+        component: customerService,
+        name: 'customerService'
       }
         
 ]
