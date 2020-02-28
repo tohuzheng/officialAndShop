@@ -1,75 +1,47 @@
 <template>
     <div>
-        <el-row>
-            <el-col :span="4"><div class="left-div"></div></el-col>
-
-            <el-col :span="4">
-                <div class="shop-one">
-                    <div>
-                        <img src="../../assets/phone.jpg" class="shop-img"/>
-                    </div>
-                    <div class="shop-world">
-                        <label>Apple iPhone 11 (A2223) 128GB 紫色 移动联通电信4G手机 双卡双待</label>
-                    </div>
-                    <div class="shop-price">
-                        <label>￥5999</label>
-                    </div>
-                </div>
-            </el-col>
-
-            <el-col :span="4">
-                <div class="shop-one">
-                    <div>
-                        <img src="../../assets/phone.jpg" class="shop-img"/>
-                    </div>
-                    <div class="shop-world">
-                        <label>Apple iPhone 11 (A2223) 128GB 紫色 移动联通电信4G手机 双卡双待</label>
-                    </div>
-                    <div class="shop-price">
-                        <label>￥5999</label>
-                    </div>
-                </div>
-            </el-col>
-
-            <el-col :span="4">
-                <div class="shop-one">
-                    <div>
-                        <img src="../../assets/phone.jpg" class="shop-img"/>
-                    </div>
-                    <div class="shop-world">
-                        <label>Apple iPhone 11 (A2223) 128GB 紫色 移动联通电信4G手机 双卡双待</label>
-                    </div>
-                    <div class="shop-price">
-                        <label>￥5999</label>
-                    </div>
-                </div>
-            </el-col>
-            
-            <el-col :span="4">
-                <div class="shop-one">
-                    <div>
-                        <img src="../../assets/phone.jpg" class="shop-img"/>
-                    </div>
-                    <div class="shop-world">
-                        <label>Apple iPhone 11 (A2223) 128GB 紫色 移动联通电信4G手机 双卡双待</label>
-                    </div>
-                    <div class="shop-price">
-                        <label>￥5999</label>
-                    </div>
-                </div>
-            </el-col>
-
-            <el-col :span="4"><div class="left-div"></div></el-col>
-        </el-row>
+        <!--文件上传-->
+        <el-upload
+        action="/api/car/carManage/upfile.do"
+        list-type="picture-card"
+        :on-preview="handlePictureCardPreview"
+        :on-remove="handleRemove">
+        <i class="el-icon-plus"></i>
+        </el-upload>
+        <el-dialog :visible.sync="dialogVisible">
+        <img width="100%" :src="dialogImageUrl" alt="">
+        </el-dialog>
+        <!--文件上传-->
     </div>
 </template>
 
 <script>
 /**
-品类详细页（仅参考，无实际使用）
+    原品类详细页（仅参考，无实际使用）已废弃
+    现在用于测试组件
  */
 export default {
-    
+    data(){
+        return{
+            dialogImageUrl: '', // 文件地址
+            dialogVisible: false
+        };
+    },
+    methods:{
+        handleRemove(file, fileList) { // 删除文件
+          console.log(file.name, fileList);
+          let dto = {};
+          dto.fileName = file.name;
+          dto.list = ["yi","er","san","si","wu"];
+          httpPost("/api/car/carManage/deleteFile.do",dto);
+        },
+        handlePictureCardPreview(file) { // 查看文件
+          console.log("handlePictureCardPreview");
+          console.log(file);
+          this.dialogImageUrl = file.url;
+          this.dialogVisible = true;
+        }
+    }
 }
 </script>
 

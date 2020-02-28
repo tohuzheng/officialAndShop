@@ -86,6 +86,9 @@
       </div>
       <!--单个商品显示框结束-->
 
+      <div style="height:50px;"></div>
+
+      <!--结算栏-->
       <div class="buy-car-tail-div">
         <div>
             <el-row>
@@ -121,10 +124,10 @@
                         <el-button type="primary" @click="payMoney">结算</el-button>
                     </div>
                 </el-col>
-            </el-row>
-             
+            </el-row>  
         </div>
       </div>
+      <div style="height:50px;"></div>
   </div>
 </template>
 
@@ -251,6 +254,7 @@ export default {
   width: 80%;
   margin: 0px auto;
   padding-bottom: 10px;
+  padding-top: 20px; 
  
 }
 .buy-car-opreation-div{

@@ -9,12 +9,9 @@
                 </div>    
             </el-col>
             <el-col :span="12">
-                <transition name="el-zoom-in-center">
-                <div class="png-div" v-show="true">
+                <div class="png-div transition-box">
                     <img src='@/assets/xingxiang.png' style="height:280px"/>
                 </div>
-                </transition>
-                
             </el-col>
         </el-row>
            
@@ -22,8 +19,18 @@
 </template>
 
 <script>
+
 export default {
-    
+    data(){
+        return{
+            flag:true,
+        };
+    },
+    methods:{
+        on:function(){
+            this.flag = true;
+        }
+    }
 }
 </script>
 
@@ -41,5 +48,8 @@ export default {
  }
  .png-div{
      margin-top: 40px;
+     transform: rotate(360deg);
+     animation: myfirst 5s;
+     
  }
 </style>

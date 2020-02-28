@@ -25,6 +25,8 @@
     <div class="view-tail-div">
         没有更多了
     </div>
+    <!--回到最顶部-->
+    <el-backtop></el-backtop>
   </div>
 </template>
 

@@ -1,43 +1,49 @@
 <template>
     <div>
-        <div>
-            <el-link href="https://element.eleme.io" target="_blank">女装</el-link>
-            <label>/</label>
-            <el-link href="https://element.eleme.io" target="_blank">男装</el-link>
-            <label>/</label>
-            <el-link href="https://element.eleme.io" target="_blank">内衣</el-link>
-        </div>
-
-         <div>
-            <el-link href="https://element.eleme.io" target="_blank">手机</el-link>
-            <label>/</label>
-            <el-link href="https://element.eleme.io" target="_blank">电脑</el-link>
-            <label>/</label>
-            <el-link href="https://element.eleme.io" target="_blank">数码</el-link>
-        </div>
-
-        <div>
-            <el-link href="https://element.eleme.io" target="_blank">显示器</el-link>
-            <label>/</label>
-            <el-link href="https://element.eleme.io" target="_blank">充电宝</el-link>
-            <label>/</label>
-            <el-link href="https://element.eleme.io" target="_blank">数据线</el-link>
-        </div>
-
-        <div>
-            <el-link href="https://element.eleme.io" target="_blank">桌子</el-link>
-            <label>/</label>
-            <el-link href="https://element.eleme.io" target="_blank">板凳</el-link>
+        <div style="padding:10px; 0px;">产品分类</div>
+        <div class="type-body-div">
+            <el-row>
+                <el-col :span="8" v-for="(val, index) in typeList" :key="index">
+                    <div style="text-align:left;padding:0px 5px;width:150px;">
+                        <el-link @click="toCategory(val)">
+                            {{val}}<span style="margin-left:5px;">/</span>
+                        </el-link>
+                    </div>
+                </el-col>
+            </el-row>
         </div>
     </div>
 </template>
 
 <script>
 export default {
-    
+    data(){
+        return{
+            typeList:[]
+        };
+    },
+    methods:{
+        getDataInit:function(){
+            return["男装","女装","内衣","配饰","手机","电脑","电视","冰箱","桌子","板凳"];
+        },
+        toCategory:function(data){
+            this.$router.push("/shopCategory/"+data);
+        }
+    },
+    created(){
+        this.typeList = this.getDataInit();
+    }
 }
 </script>
 
-<style>
-
+<style scope>
+.item-type-span{
+    padding:3px 10px;
+    font-size: 14px;
+}
+.type-body-div{
+    width: 80%;
+    padding-left: 10%;
+    text-align: left;
+}
 </style>

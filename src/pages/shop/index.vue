@@ -1,13 +1,14 @@
 <template> 
-    <div>
+    <div style="margin-bottom:50px;">
+      <div style="height:50px;"></div>
       <el-row>
         <el-col :span="4">
             <leftNavi></leftNavi>
         </el-col>
-
         <el-col :span="16"><carousel></carousel></el-col>
         <el-col :span="4"></el-col>
       </el-row>
+      <div style="height:50px;"></div>
       <newShop></newShop>
       <recommend></recommend>
     </div>

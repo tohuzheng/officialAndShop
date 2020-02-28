@@ -2,7 +2,7 @@
   <div>
       <div class="customer-service-background">
           <div style="font-size:36px;padding:10px 50px;">
-              客服中心
+              客服中心 <span style="font-size:22px;padding-left:100px;">企业产品在线展示平台</span>
           </div>
           <el-divider></el-divider>
           <div class="chuang-kou-div">
@@ -45,6 +45,9 @@
 </template>
 
 <script>
+/**
+ * 在线客服页
+ */
 export default {
     components: {},
     data() {
