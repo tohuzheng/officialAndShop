@@ -15,6 +15,7 @@ import messige from '@/pages/shop/Messige.vue'
 import myFootprint from '@/pages/shop/MyFootprint.vue'
 import shopDetail from '@/pages/shop/ShopDetail.vue'
 import customerService from '@/pages/shop/CustomerService.vue'
+import shopCategoryDetial from '@/pages/shop/ShopCategoryDetial.vue'
 
 export default [
  
@@ -58,8 +59,12 @@ export default [
             component: myFootprint
           },
           {
-            path: '/detail/:shopId',  //商品详细页
+            path: '/detail/:shopId',  // 单个商品详细页
             component: shopDetail
+          },
+          {
+            path: '/shopCategory/:type',  // 某个品类的详情
+            component: shopCategoryDetial
           }
         ]
       },

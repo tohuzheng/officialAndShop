@@ -88,6 +88,7 @@ export default {
     color:#666;
     padding: 5px;
     margin-bottom: 100px;
+    text-align: center;
 }
 img{  
     width: auto;  
