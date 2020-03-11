@@ -12,22 +12,12 @@ import qs from 'qs'
  * http的post方法
  * url：请求地址
  * param：传递参数
- * callSuccess：请求成功回调函数
- * callError：请求失败回调函数
  */
-export function httpPost(url, params, callSuccess, callError){
+export function httpPost(url, params){
   // 序列化参数
   let data = qs.stringify(params, { indices: false });
   // 发送请求
-  axios.post(url, data).then((data) => {
-    if(callSuccess != null){
-      callSuccess(data);
-    }
-  }).catch((data) => {
-    if(callError != null){
-      callError(data);
-    }
-  });
+  return axios.post(url, data);
 }
 
 
@@ -35,22 +25,10 @@ export function httpPost(url, params, callSuccess, callError){
  * http的get方法
  * url：请求地址
  * param：传递参数
- * callSuccess：请求成功回调函数
- * callError：请求失败回调函数
  */
-export function httpGet(url, param, callSuccess, callError){
-    // 序列化参数
-    let data = qs.stringify(params, { indices: false });
+export function httpGet(url, params){
     // 发送请求
-    axios.get(url,{params:data}).then((data) => {
-      if(callSuccess != null){
-        callSuccess(data);
-      }
-    }).catch((data) => {  
-      if(callError != null){
-        callError(data);
-      }
-    });
+    return axios.get(url,{params:params});
 }
 
 
@@ -61,11 +39,10 @@ export function httpGet(url, param, callSuccess, callError){
  * callSuccess：请求成功回调函数
  * callError：请求失败回调函数
  */
-export function httpDelete(url, param, callSuccess, callError){
-        // 序列化参数
-        let data = qs.stringify(params, { indices: false });
+export function httpDelete(url, params, callSuccess, callError){
+       
         // 发送请求
-        axios.delete(url,{params:data}).then((data) => {
+        axios.delete(url,{params:params}).then((data) => {
           if(callSuccess != null){
             callSuccess(data);
           }

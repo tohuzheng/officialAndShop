@@ -14,10 +14,10 @@ const router = new Router({
 
 /* 路由拦截器 */
 router.beforeEach((to, from, next) => {//to到哪里去，from从哪里来
-  console.log("to:=======");
-  console.log(to);
-  console.log(from);
-  console.log("to:=======");
+  // console.log("to:=======");
+  // console.log(to);
+  // console.log(from);
+  // console.log("to:=======");
   next();
   // if (to.matched.some(r => r.meta.requireAuth)) {
   //   if (store.state.token) {

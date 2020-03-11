@@ -42,23 +42,25 @@
 
 <script>
 import jsencryp from '@/lib/js/jsencrypt.js'   //导入RSA加密解密文件
-
+import { loginCheck, getPublicKey } from '@/server/shop.js'
 export default {
     name:"login",
     data(){
         return{
             username:'',
             password:'',
-            publicKey:''
+            publicKey:'',
+            keyNo:''
         }
     },
     methods:{
         submitLogin:function(){
             let dto={};
             dto.username=this.username;
-            let pass=this.encryptFun(this.password,publicKey);
+            let pass=this.encryptFun(this.password,this.publicKey);
             dto.password=pass;
-            this.send(name,pass);
+            dto.keyNo = this.keyNo;
+            this.send(dto);
         },
         resete:function(){
             this.username='';
@@ -69,8 +71,6 @@ export default {
             let encrypt = new JSEncrypt();  //创建工具对象
             encrypt.setPublicKey(publicKey); //设置公钥
             let encryptPwd = encrypt.encryptLong(val); //进行加密
-            console.log(encryptPwd);
-
             return encryptPwd;
         },
         decryptionFun:function(val,privateKey){
@@ -78,19 +78,19 @@ export default {
             let decryption = new JSEncrypt();  //创建工具对象
             decryption.setPrivateKey(privateKey); // 设置私钥
             const data = decryption.decrypt(val); // 进行解密
-            console.log(data);
-
             return data;
         },
-        send:function(name,pass){
-            //  let param = new URLSearchParams()
-            //  param.append('username',name);
-            //  param.append('password',pass);
-            //let dto={'username':name,'password':pass,'keys':[1,2,3,4,5,6]};
-            this.axios.post('/api/KeBiao/addAccount',dto)
-            .then((data) => {
-                console.log(data)
-                alert(data.data)
+        send:function(dto){
+            loginCheck(dto).then((res)=>{
+                 if(res){
+                     console.log(res);
+                     this.$router.push("/shop");
+                 }else{
+                     this.$message.error("用户名或者密码错误");
+                 }
+            }).catch((err)=>{
+                console.log(err.reponse)
+                this.$message.error("用户名或者密码错误");
             });
         },
         toRegister:function(){
@@ -98,9 +98,9 @@ export default {
         }
     },
     created(){
-        this.axios.get('/api/Security/getPublicKey')
-        .then((data) => {
-            this.publicKey=data;
+        getPublicKey().then((data) => {
+            this.publicKey = data.data.publicKey;
+            this.keyNo = data.data.keyNo;
         });
     }
 }
