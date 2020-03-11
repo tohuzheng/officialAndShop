@@ -84,6 +84,9 @@ export default {
             loginCheck(dto).then((res)=>{
                  if(res){
                      console.log(res);
+                     /**
+                      * 登录完成，记录状态
+                      */
                      this.$router.push("/shop");
                  }else{
                      this.$message.error("用户名或者密码错误");
