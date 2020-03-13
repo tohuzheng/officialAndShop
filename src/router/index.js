@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import indexRouters from './shop/shop-index.js'
 import officialRouter from './official/official-router.js'
 import newsRouter from './news/news-router.js'
+import {store} from '../store/index.js'
 
 Vue.use(Router)
 let listRouter = [...indexRouters , ...officialRouter,...newsRouter];
@@ -15,10 +16,22 @@ const router = new Router({
 /* 路由拦截器 */
 router.beforeEach((to, from, next) => {//to到哪里去，from从哪里来
   // console.log("to:=======");
-  // console.log(to);
-  // console.log(from);
+  //  console.log("to:", to);
+  //  console.log("from", from);
   // console.log("to:=======");
-  next();
+  if(to.meta.noNeedLogin){
+    next();
+  }else{
+    let data = store.state.userInfo
+    
+    if(data.username != ''){
+      next();
+    }else{
+      next({ path: '/login' })
+    }
+  }
+  
+ 
   // if (to.matched.some(r => r.meta.requireAuth)) {
   //   if (store.state.token) {
   //     next();

@@ -1,10 +1,3 @@
-``` bash
-仅创建文件未完成的组件：
-CompareProduct
-shopDetail
-shopCategoryDetail
-```
-
 # official-shop
 
 > A Vue.js project

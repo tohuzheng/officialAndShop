@@ -22,7 +22,8 @@ export default [
       {
         path: '/login',  //商城登录路由
         name: 'login',
-        component: login
+        component: login,
+        meta:{noNeedLogin:true}
       },
       {
         path: '/shop',  //商城内路由
