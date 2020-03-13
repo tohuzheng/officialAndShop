@@ -15,24 +15,29 @@ export default [
             {
                 name:"dynamics",
                 path:"/dynamics",
-                component:Dynamics
+                component:Dynamics,
+                meta:{noNeedLogin:true}
             },
             {
                 name:"topics",
                 path:"/topics",
-                component:HotTopics
+                component:HotTopics,
+                meta:{noNeedLogin:true}
             },
             {
                 path:"/message",
-                component:HotMessage
+                component:HotMessage,
+                meta:{noNeedLogin:true}
             },
             {
                 path:"/newsSearch",
-                component:NewsSearch
+                component:NewsSearch,
+                meta:{noNeedLogin:true}
             },
             {
                 path:"/newsDetial",
-                component:DynamicsDetial
+                component:DynamicsDetial,
+                meta:{noNeedLogin:true}
             }
         ]
     },

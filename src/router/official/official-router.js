@@ -6,12 +6,14 @@ export default [
     {
       path: '/officialWelcome',
       name: 'officialWelcome',
-      component: officialWelcome
+      component: officialWelcome,
+      meta:{noNeedLogin:true}
     },
     {
       path: '/official',
       name: 'official',
-      component: officialIndex
+      component: officialIndex,
+      meta:{noNeedLogin:true}
     },
     { //设置默认页面
       path: '/',
