@@ -1,6 +1,6 @@
 # official-shop
 
-> A Vue.js project
+> 此项目是一个vue项目其中使用到了路由，Vuex，axios，ElementUI依赖
 > 这是一个企业官网+新闻+电子商城的综合项目，重点编写电子商城
 
 ## Build Setup
