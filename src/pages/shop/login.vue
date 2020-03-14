@@ -91,14 +91,14 @@ export default {
             }
             loginCheck(dto).then((res)=>{
                  if(res){
-                     console.log(res);
+                     //console.log(res);
                      this.addInfo(dto);
                      this.$router.push("/shop");
                  }else{
                      this.$message.error("用户名或者密码错误");
                  }
             }).catch((err)=>{
-                console.log(err.reponse)
+                //console.log(err.reponse)
                 this.$message.error("用户名或者密码错误");
             });
         },

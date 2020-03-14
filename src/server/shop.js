@@ -9,3 +9,5 @@ export const loginCheck = (body) => httpPost("/api/customer/checkLogin", body);
 export const getPublicKey = () => httpGet("/api/customer/getPublicKey");
 // 注册信息提交
 export const registerCustomer = (body) => httpPost("/api/customer/register", body);
+// 获取产品类型
+export const getProductClass = () => httpGet("/api/productClass/queryAllProductClass");

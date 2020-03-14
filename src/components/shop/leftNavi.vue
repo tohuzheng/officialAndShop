@@ -16,6 +16,10 @@
 </template>
 
 <script>
+/**
+ * 商城首页左侧导航
+ */
+import { getProductClass } from '@/server/shop.js'
 export default {
     data(){
         return{
@@ -24,11 +28,18 @@ export default {
     },
     methods:{
         getDataInit:function(){
-            return["男装","女装","内衣","配饰","手机","电脑","电视","冰箱","桌子","板凳"];
+            let productClass=[];
+            getProductClass().then((response)=>{
+                let className = response.data.data;
+                for(let i=0;i<className.length;i++){
+                    productClass.push(className[i]);
+                } 
+            });
+            return productClass || ["男装","女装","内衣","配饰","手机","电脑","电视","冰箱","桌子","板凳"];
         },
         toCategory:function(data){
             this.$router.push("/shopCategory/"+data);
-        }
+        } 
     },
     created(){
         this.typeList = this.getDataInit();
