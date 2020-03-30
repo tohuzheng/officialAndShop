@@ -15,7 +15,7 @@
       <el-menu-item index="10"><div style="width:550px;"></div></el-menu-item>
       <el-menu-item index="4" @click="toRegister" v-show="true">注册</el-menu-item>
       <el-submenu index="2">
-        <template slot="title">{{getUserInfo.username}}</template>
+        <template slot="title">{{ UserName }}</template>
         <el-menu-item index="2-1" @click="toPerson">个人信息</el-menu-item>
         <el-menu-item index="2-2" @click="updatePassword">修改密码</el-menu-item>
         <el-menu-item index="2-3" @click="toMessige">
@@ -63,7 +63,8 @@
 
 <script>
 //首页导航栏组件
-import { mapGetters } from 'vuex'
+import { getUserNameApi } from '@/server/shop.js'
+import { getUserName } from '@/utils/localSessionStoreUtils.js'
 export default {
     name:"nave",
     data(){
@@ -74,6 +75,7 @@ export default {
             newPassword2:'',
             chechPasswordWord:'', //检查两次密码是否一致的提示文字
             chechPasswordFlag: true, //密码是否一致的标志
+            customerName:''
         };
     },
     methods:{
@@ -121,15 +123,20 @@ export default {
                 this.chechPasswordFlag = false;
             }
         }
-      }
-    },
-    computed:{
-        ...mapGetters({
-          getUserInfo:'getUserInfo'
-        }),
+      },
     },
     create(){
-        
+      let abc = getUserName();
+      console.log(abc);
+    },
+    computed:{
+        UserName:function(){
+          let that = this;
+          getUserNameApi().then((res)=>{
+            that.customerName = res.data;
+          });
+          return this.customerName+"";
+        }
     }
 };
 </script>

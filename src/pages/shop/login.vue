@@ -43,7 +43,7 @@
 <script>
 import jsencryp from '@/lib/js/jsencrypt.js'   //导入RSA加密解密文件
 import { loginCheck, getPublicKey } from '@/server/shop.js'
-import { mapActions } from 'vuex'
+import { saveLogin } from '@/utils/localSessionStoreUtils.js'
 export default {
     name:"login",
     data(){
@@ -55,9 +55,6 @@ export default {
         }
     },
     methods:{
-        ...mapActions({
-            addInfo:"actionAddInfo", //左边为模板中的方法名，右边为store中Mutations中的一个方法
-        }),
         submitLogin:function(){
             let dto={};
             dto.username=this.username;
@@ -85,20 +82,14 @@ export default {
             return data;
         },
         send:function(dto){
-            if(dto){
-                
-                this.$router.push("/shop");
-            }
             loginCheck(dto).then((res)=>{
-                 if(res){
-                     //console.log(res);
-                     this.addInfo(dto);
+                 if(res.data.msg == "ok"){
+                     saveLogin(res.data.token);
                      this.$router.push("/shop");
                  }else{
                      this.$message.error("用户名或者密码错误");
                  }
             }).catch((err)=>{
-                //console.log(err.reponse)
                 this.$message.error("用户名或者密码错误");
             });
         },

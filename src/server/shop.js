@@ -11,3 +11,5 @@ export const getPublicKey = () => httpGet("/api/customer/getPublicKey");
 export const registerCustomer = (body) => httpPost("/api/customer/register", body);
 // 获取产品类型
 export const getProductClass = () => httpGet("/api/productClass/queryAllProductClass");
+// 获取用户名
+export const getUserNameApi = () => httpGet("/api/customer/getUserName");
