@@ -6,8 +6,12 @@
           </div>
           <el-divider></el-divider>
           <div class="chuang-kou-div">
+              <div style="margin-bottom:5px;">
+                   <el-button type="info" @click="getCustomerServer">人工客服</el-button>
+                   <el-button type="info" @click="help">自助客服</el-button>
+              </div>
               <div class="dui-hua" id="myby">
-                    <ul class="infinite-list" v-infinite-scroll="load">
+                    <ul class="infinite-list">
                         <li v-for="(item, index) in chatData" class="infinite-list-item" :key="index">
                             <div v-if="item.speackName ==='店小二'" class="employee-div">
                                 {{ item.speackName }}: {{ item.content }}
@@ -46,63 +50,108 @@
 
 <script>
 /**
- * 在线客服页
+ * 在线客服页 
  */
 export default {
     components: {},
     data() {
        return {
            closeFlag:false,
-           sendData:'待发送的消息',
+           sendData:'',
            chatData:[
                {
                   speackName:"店小二",
-                  content:"你好！欢迎您光临小店，请问您有什么需要呢？"
-               },
-               {
-                  speackName:"我",
-                  content:"你好！我想知道你们都有什么快递" 
+                  content:"你好！请选择人工客服或者自助客服。"
                }
-           ]
+           ],
+           chatDataItem:{ // 单个消息元素
+               speackName:"",
+               content:""
+           },
+           path:"ws://localhost:8083/websocket", // socket连接地址
+           socket:"", // socket对象
        };
     },
     methods: {
-        load:function (){
-            if( this.count>100){
-                return;
-            }
-            this.count += 2
+        scrollBottom:function(){
+             this.$nextTick(function() {
+             let div = document.getElementById('myby');
+             div.scrollTop = div.scrollHeight;
+             })
         },
-        send:function (){
-            let data = {
-                speackName:"我",
-                content:"" 
+        webSocketInit: function () { //请求来连接socket
+            if(typeof(WebSocket) === "undefined"){
+                alert("您的浏览器不支持socket")
+            }else{
+                // 实例化socket
+                this.socket = new WebSocket(this.path) 
+                // 监听socket连接
+                this.socket.onopen = this.open
+                // 监听socket错误信息
+                this.socket.onerror = this.error
+                // 监听socket消息
+                this.socket.onmessage = this.getMessage
             }
-            data.content = this.sendData;
+        },
+        open: function () {
+            // socket连接成功的回调函数
+            this.socket.send("呼叫人工客服")
+            console.log("socket连接成功")
+        },
+        error: function (msg) {
+            // 发生异常的回调方法
+            console.log("连接错误", msg)
+        },
+        getMessage: function (msg) {
+            // 获取消息
+            let item = {
+               speackName:"店小二",
+               content:msg.data
+            }
+            this.chatData.push(item);
+        },
+        send: function (val) {
+            // 发送消息
+            this.socket.send(this.sendData)
+            let data = {
+                speackName: "我",
+                content: this.sendData
+            }
             this.chatData.push(data);
             this.sendData = '';
             console.log("发送后台："+this.sendData);
             this.scrollBottom(); //使滚动条到最下方
         },
-        close:function(){
+        close: function () {
+            // 关闭连接的方法
+            this.socket.close();
+
             let data = {
                 speackName:"close",
                 content:"" 
             }
             this.chatData.push(data);
             this.scrollBottom();
-            console.log("发送后台："+this.sendData);
+            console.log("socket已经关闭")
         },
-        scrollBottom:function(){
-             this.$nextTick(function() {
-             let div = document.getElementById('myby');
-             div.scrollTop = div.scrollHeight;
-             })
+        getCustomerServer() {
+            this.webSocketInit();
+        },
+        help() {
+            let data = {
+                speackName:"店小二",
+                content:"该功能还在开发中喔" 
+            }
+            this.chatData.push(data);
         }
     },
     created() {
-
-    }
+        
+    },
+    destroyed(){
+         // 销毁监听
+        this.socket.onclose = this.close
+    },
 };
 </script>
 

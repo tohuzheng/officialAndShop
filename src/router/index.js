@@ -22,13 +22,7 @@ router.beforeEach((to, from, next) => {//to到哪里去，from从哪里来
   if(to.meta.noNeedLogin){
     next();
   }else{
-    let data = store.state.userInfo
-    
-    if(data.username != ''){
-      next();
-    }else{
-      next({ path: '/login' })
-    }
+    next();
   }
   
  

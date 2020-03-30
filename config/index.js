@@ -16,12 +16,27 @@ module.exports = {
         pathRewrite: {
           '^/api': '' //这里理解成用‘/api’代替target里面的地址，后面组件中我们掉接口时直接用api代替 比如我要调用'https://api.douban.com/user/add'，直接写‘/api/user/add’即可，此处的‘api’可以设置为自己想要设置的任何词语，符合规范即可
         }
-    }
+      },
+      '/img': { // /img开头的请求都会走代理
+        target: 'http://127.0.0.1:8081',//
+        changeOrigin: true,
+        pathRewrite: {
+          '^/img': '/img' //将'/img'前缀替换为/img
+        },
+      },
+      '/websocket': { // /chat开头的请求都会走代理
+        target: 'ws://127.0.0.1:8081',//
+        ws:true,
+        changeOrigin: true,
+        pathRewrite: {
+          '^/websocket': 'websocket' //将'/chat'前缀替换为‘’空
+        },
+      }
     },
 
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST
-    port: 8082, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
+    port: 8083, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
     autoOpenBrowser: false,
     errorOverlay: true,
     notifyOnErrors: true,
