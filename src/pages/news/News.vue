@@ -10,9 +10,7 @@
                     <el-input v-model="title" placeholder="请输入标题"></el-input>
                     <el-button type="primary" style="height:40px;width:80px" @click="searchNews">搜索</el-button>      
                 </div>
-            </el-menu-item>
-            
-            
+            </el-menu-item>     
        </el-menu>
        <div>
            <router-view></router-view>
@@ -33,7 +31,7 @@ export default {
     },
     methods:{
         toOne:function(){
-            this.$router.push({name:"dynamics"});
+            this.$router.push({name:"dynamics",params:{type:1}});
         },
         toTwo:function(){
             this.$router.push("/message");
@@ -45,9 +43,10 @@ export default {
             let key = this.title;
             let path = this.$route.path;
             if(path === "/newsSearch"){
-                alert("正在搜索页面");
+                this.$router.push({name:"NewsSearch",query:{key:key}});
+                this.$router.go(0);
             }else{
-                this.$router.push({path:"/newsSearch",query:{key:key}});
+                this.$router.push({name:"NewsSearch",query:{key:key}});
             }
         },
         toOfficial:function(){

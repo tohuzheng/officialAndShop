@@ -14,7 +14,7 @@
                 <el-menu-item index="4-3" @click="showHonorDetails">企业荣誉</el-menu-item>
             </el-submenu>
             <el-menu-item index="3" @click='toShop'>企业产品</el-menu-item>
-            <el-menu-item index="6" @click='toNews'>新闻中心</el-menu-item>
+            <el-menu-item index="6" @click='toNews'>资讯中心</el-menu-item>
             
             <el-menu-item index="5" @click="toOnlyProduct">防伪查询</el-menu-item>
         </el-menu>

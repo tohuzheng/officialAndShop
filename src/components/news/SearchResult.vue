@@ -4,26 +4,29 @@
         <h1>标题关键字："{{searchKey}}"搜索结果如下</h1>
       </div>
 
-      <div style="margin:10px anto;" v-for="(item,index) in data" :key="index">
+      <div style="margin:10px anto;" v-for="(item,index) in list" :key="index">
         <div class="topics-list">
             <el-row>
                 <el-col :span="8">
                     <div>
-                        <img :src="item.imgUrl"/>
+                        <img :src="item.imgUrl" width="150px" height="100px"/>
                     </div>
                 </el-col>
                 <el-col :span="16">
                     <div>
-                        <el-link href="https://element.eleme.io">
-                        <h3>湖北省红十字会3名厅级干部被问责 副会长张钦被免</h3>
-                        </el-link> 
+                        <div style="text-align:left;">
+                            <el-link @click="goDetail(item.id)">
+                            <h3>{{item.title}}</h3>
+                            </el-link>
+                        </div>
+                         
                         <div>
                             <div align="left">
                                 <span class="item-span1">
-                                    <label style="font-size:12px">发布时间：2019-12-12 08:00:00</label>
+                                    <label style="font-size:12px">发布时间：{{item.createDate}}</label>
                                 </span>
                                 <span class="item-span2">
-                                    <label style="font-size:12px">阅读量：399</label>
+                                    <label style="font-size:12px">阅读量：{{item.readNumber}}</label>
                                 </span>
                             </div>
                         </div>
@@ -40,8 +43,8 @@
       </div>
 
       <el-divider></el-divider>
-      <div style="margin:50px auto;">
-          <label>新媒体介绍投资者关系 Investor Relations广告服务诚征英才保护隐私权免责条款意见反馈</label>
+      <div style="margin:30px auto;">
+          <label>@Coply 2010-2020 企业产品在线展示销售平台科技有限公司</label>
       </div>
   </div>
 </template>
@@ -50,57 +53,44 @@
 /**
  * 新闻搜索展示组件
  */
+import { searchByTitleLikeApi } from '@/server/shop.js'
+
 export default {
     components: {},
     data() {
        return {
-           data:[
-               {
-                   title:"这是一个新闻标题",
-                   imgUrl:require("@/assets/news.jpg"),
-                   readNumber:300,
-                   date:"2019-12-11 09:00:00",
-                   id:12
-               }, {
-                   title:"这是一个新闻标题",
-                   imgUrl:require("@/assets/news.jpg"),
-                   readNumber:300,
-                   date:"2019-12-11 09:00:00",
-                   id:12
-               }, {
-                   title:"这是一个新闻标题",
-                   imgUrl:require("@/assets/news.jpg"),
-                   readNumber:300,
-                   date:"2019-12-11 09:00:00",
-                   id:12
-               }, {
-                   title:"这是一个新闻标题",
-                   imgUrl:require("@/assets/news.jpg"),
-                   readNumber:300,
-                   date:"2019-12-11 09:00:00",
-                   id:12
-               }, {
-                   title:"这是一个新闻标题",
-                   imgUrl:require("@/assets/news.jpg"),
-                   readNumber:300,
-                   date:"2019-12-11 09:00:00",
-                   id:12
-               }
-           ],
-           searchKey:''
+           searchKey:'',
+           list:[],
+           query:{
+               size:10,
+               current:1,
+               title:''
+           },
        };
     },
     methods: {
-        getDate:function(){
-            let data=this.$route.query.key;
-            this.searchKey=data;
-        },
         moreNews:function(){
-            alert("更多");
+            this.query.current = this.query.current+1;
+            let that = this;
+            searchByTitleLikeApi(this.query).then((res)=>{
+                if(res.data.records.length == 0){
+                    this.$message.success("到底啦！没有更多啦！");
+                }
+                res.data.records.forEach((item)=>{
+                    that.list.push(item);
+                });
+            });
+        },
+        searchTilePage(){
+            searchByTitleLikeApi({title:this.searchKey}).then((res)=>{
+                this.list = res.data.records;
+            });
         }
     },
     created() {
-        this.getDate();
+        this.searchKey = this.$route.query.key;
+        this.query.title = this.searchKey;
+        this.searchTilePage();
     }
 };
 </script>

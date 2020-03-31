@@ -32,11 +32,13 @@ export default [
             {
                 path:"/newsSearch",
                 component:NewsSearch,
+                name:"NewsSearch",
                 meta:{noNeedLogin:true}
             },
             {
                 path:"/newsDetial",
                 component:DynamicsDetial,
+                name:"NewsDetial",
                 meta:{noNeedLogin:true}
             }
         ]

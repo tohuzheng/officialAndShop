@@ -17,3 +17,11 @@ export const getUserNameApi = () => httpGet("/api/customer/getUserName");
 export const submitSuggestApi = (body) => httpPost("/api/suggest/addSuggest", body);
 // 查询产品防伪码信息
 export const searchOnlyCodeApi = (body) => httpPost("/api/onlyCode/queryOnlyCode", body);
+// 查询新闻，分页查询
+export const queryNewsPageByType = (body) => httpPost("/api/news/queryNewsPage", body);
+// 查询最热，三条数据
+export const queryMaxHotThreeApi = (body) => httpPost("/api/news/queryMaxHotThree", body);
+// 新闻模糊搜索，分页
+export const searchByTitleLikeApi = (body) => httpPost("/api/news/searchByTitleLike", body);
+// 统计新闻阅读量
+export const readNumberCountApi = (body) => httpPost("/api/news/readNumberAdd", body);

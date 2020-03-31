@@ -1,32 +1,36 @@
 <template>
   <div class="topics">
+      <!--最热的新闻-->
       <div style="border-bottom:#999999 dashed 1px;padding:20px 0px;">
-        <el-link type="info" style="font-size:22px;color:#222;">{{notImgNews[0].title}}</el-link>
-        <div v-for="(item,index) in notImgNews" :key="index" style="margin:5px auto;">
-            <el-link type="info" v-if="index!=0" style="color:#222;font-size:16px;">{{item.title}}</el-link>
+        <div v-for="(item,index) in maxHotThree" :key="index" style="margin:5px auto;">
+            <el-link type="info" style="font-size:22px;color:#222;" v-if="index == 0" @click="goDetail(item.id)">{{item.title}}</el-link>
+            <el-link type="info" style="color:#222;font-size:16px;" v-else @click="goDetail(item.id)">{{item.title}}</el-link>
         </div>
       </div>
 
-      <div style="margin:10px anto;" v-for="(item,index) in data" :key="index">
+      <div style="margin:10px anto;" v-for="(item,index) in list" :key="index">
         <div class="topics-list">
             <el-row>
                 <el-col :span="8">
                     <div>
-                        <img :src="item.imgUrl"/>
+                        <img :src="item.imgUrl" width="150px" height="100px"/>
                     </div>
                 </el-col>
                 <el-col :span="16">
                     <div>
-                        <el-link href="https://element.eleme.io">
-                        <h3>湖北省红十字会3名厅级干部被问责 副会长张钦被免</h3>
-                        </el-link> 
+                        <div style="text-align:left;">
+                            <el-link @click="goDetail(item.id)">
+                            <h3>{{item.title}}</h3>
+                            </el-link>
+                        </div>
+                         
                         <div>
                             <div align="left">
                                 <span class="item-span1">
-                                    <label style="font-size:12px">发布时间：2019-12-12 08:00:00</label>
+                                    <label style="font-size:12px">发布时间：{{item.createDate}}</label>
                                 </span>
                                 <span class="item-span2">
-                                    <label style="font-size:12px">阅读量：399</label>
+                                    <label style="font-size:12px">阅读量：{{item.readNumber}}</label>
                                 </span>
                             </div>
                         </div>
@@ -43,8 +47,8 @@
       </div>
 
       <el-divider></el-divider>
-      <div style="margin:50px auto;">
-          <label>新媒体介绍投资者关系 Investor Relations广告服务诚征英才保护隐私权免责条款意见反馈</label>
+      <div style="margin:30px auto;">
+          <label>@Coply 2010-2020 企业产品在线展示销售平台科技有限公司</label>
       </div>
   </div>
 </template>
@@ -53,68 +57,50 @@
 /**
  * 热点资讯组件
  */
+import { queryNewsPageByType, queryMaxHotThreeApi } from '@/server/shop.js'
 export default {
     components: {},
     data() {
        return {
-           data:[
-               {
-                   title:"这是一个新闻标题",
-                   imgUrl:require("@/assets/news.jpg"),
-                   readNumber:300,
-                   date:"2019-12-11 09:00:00",
-                   id:12
-               }, {
-                   title:"这是一个新闻标题",
-                   imgUrl:require("@/assets/news.jpg"),
-                   readNumber:300,
-                   date:"2019-12-11 09:00:00",
-                   id:12
-               }, {
-                   title:"这是一个新闻标题",
-                   imgUrl:require("@/assets/news.jpg"),
-                   readNumber:300,
-                   date:"2019-12-11 09:00:00",
-                   id:12
-               }, {
-                   title:"这是一个新闻标题",
-                   imgUrl:require("@/assets/news.jpg"),
-                   readNumber:300,
-                   date:"2019-12-11 09:00:00",
-                   id:12
-               }, {
-                   title:"这是一个新闻标题",
-                   imgUrl:require("@/assets/news.jpg"),
-                   readNumber:300,
-                   date:"2019-12-11 09:00:00",
-                   id:12
-               }
-           ],
-           notImgNews:[
-               {
-                   title:"我们向光前行",
-                   id:2
-               },{
-                   title:"正是共担风雨时",
-                   id:3
-               },{
-                   title:"打响疫情防控的人民战争",
-                   id:5
-               }
-           ]
+           query:{
+               size:10,
+               current:1,
+               newsType:2
+           },
+           list:[],
+           maxHotThree:[],
        };
     },
     methods: {
-        getDate:function(){
-            let data=this.$route.query.id;
-            console.log("data:"+data);
-        },
         moreNews:function(){
-            alert("更多");
+            this.query.current = this.query.current+1;
+            let that = this;
+            queryNewsPageByType(this.query).then((res)=>{
+                if(res.data.records.length == 0){
+                    this.$message.success("到底啦！没有更多啦！");
+                }
+                res.data.records.forEach((item)=>{
+                    that.list.push(item);
+                });
+            });
+        },
+        queryNewsPage(){
+            queryNewsPageByType(this.query).then((res)=>{
+                this.list = res.data.records;
+            });
+        },
+        goDetail(key){
+            this.$router.push({name:"NewsDetial",params:{id:key}});
+        },
+        queryMaxHot(){
+            queryMaxHotThreeApi({newsType:2}).then((res)=>{
+                this.maxHotThree = res.data;
+            });
         }
     },
     created() {
-        this.getDate();
+        this.queryMaxHot();
+        this.queryNewsPage();
     }
 };
 </script>
