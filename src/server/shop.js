@@ -13,3 +13,7 @@ export const registerCustomer = (body) => httpPost("/api/customer/register", bod
 export const getProductClass = () => httpGet("/api/productClass/queryAllProductClass");
 // 获取用户名
 export const getUserNameApi = () => httpGet("/api/customer/getUserName");
+// 官网首页提交建议
+export const submitSuggestApi = (body) => httpPost("/api/suggest/addSuggest", body);
+// 查询产品防伪码信息
+export const searchOnlyCodeApi = (body) => httpPost("/api/onlyCode/queryOnlyCode", body);

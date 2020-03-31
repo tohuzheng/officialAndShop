@@ -5,6 +5,7 @@
         <introduction/>
         <culture/>
         <honor/>
+        <mapView/>
         <div class="tail-div-size">
             <div class="honor-index-div1">
                 <div class="left-tail-top-div">
@@ -60,17 +61,17 @@
                     clearable
                     class="honor-serche-input">
                     </el-input>
-                    <el-button type="primary">提交建议</el-button>
+                    <el-button type="primary" @click="saveSuggest">提交建议</el-button>
                 </div>
                 <div style="margin:10px 40px;">
                     We don't send spam. Actually, wha are we kiding, we'll spamthe shit out of you'r inbox
                 </div>
             </div>
         </div>
-        <div align='center' style="margin-top:15px">
-            Copyright©2018企业产品科技集团股份有限公司<br>
-            版权所有京ICP证140608号.京ICP备12041691号-2.京公网安备11010502026582<br>
-            互联网药品信息服务资格证书 （京）-非经营性-2017-0039<br>
+        <div align='center' style="margin-top:15px;padding-bottom:20px;">
+            Copyright©2020企业产品在线展示科技集团股份有限公司<br>
+            版权所有京ICP证14684568号.京ICP备120498651号-2.京公网安备11088802026582<br>
+            互联网科技信息服务资格证书 （京）-非经营性-2017-0039<br>
         </div>
         <el-backtop></el-backtop>
     </div>
@@ -82,15 +83,24 @@ import navi from '@/components/official/Navi.vue'
 import introduction from '@/components/official/Introduction'
 import culture from '@/components/official/Culture'
 import honor from '@/components/official/Honor'
+import mapView from '@/components/official/MapView.vue'
+import { submitSuggestApi } from '@/server/shop.js'
 
 export default {
     components:{
-        welcome,navi,introduction,culture,honor
+        welcome,navi,introduction,culture,honor,mapView
     },
     data(){
         return {
             input:''
         };
+    },
+    methods:{
+        saveSuggest:function(){
+            submitSuggestApi({suggestContent:this.input}).then((res)=>{
+                this.$message.success("建议提交成功");
+            });
+        }
     }
 
 }
